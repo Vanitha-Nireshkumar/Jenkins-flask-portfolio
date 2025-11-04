@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub-cred-id')
+        DOCKERHUB_CREDENTIALS = credentials('DockerHub')
         IMAGE_NAME = 'theshubhamgour/flask-portfolio'
     }
 
@@ -12,18 +12,12 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
-            steps {
-                sh 'pip install -r requirements.txt'
-            }
-        }
-
         stage('Run Lint Test') {
             steps {
-                sh 'pip install flake8'
+                sh 'pip3 install --break-system-packages flake8'
                 sh 'flake8 . || true'
+                  }
             }
-        }
 
         stage('Build Docker Image') {
             steps {
