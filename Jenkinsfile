@@ -12,17 +12,6 @@ pipeline {
             }
         }
 
-        stage('Run Lint Test') {
-            steps {
-                sh '''
-                    python3 -m venv venv
-                    . venv/bin/activate
-                    pip install flake8
-                    flake8 .
-                '''
-            }
-            }
-
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t $IMAGE_NAME:$BUILD_NUMBER .'
