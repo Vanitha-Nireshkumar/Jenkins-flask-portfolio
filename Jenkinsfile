@@ -14,9 +14,13 @@ pipeline {
 
         stage('Run Lint Test') {
             steps {
-                sh 'pip3 install --break-system-packages flake8'
-                sh 'flake8 . || true'
-                  }
+                sh '''
+                    python3 -m venv venv
+                    . venv/bin/activate
+                    pip install flake8
+                    flake8 .
+                '''
+            }
             }
 
         stage('Build Docker Image') {
