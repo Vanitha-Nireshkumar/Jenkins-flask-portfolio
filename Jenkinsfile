@@ -29,7 +29,7 @@ pipeline {
 
         stage('Deploy to Stage') {
             steps {
-                sh 'docker run -d -p 5000:5000 $IMAGE_NAME:$BUILD_NUMBER'
+                sh 'docker run -d -p 5000:5000 $IMAGE_NAME:Latest'
             }
         }
     }
