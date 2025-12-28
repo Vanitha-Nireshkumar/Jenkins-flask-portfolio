@@ -34,7 +34,8 @@ pipeline {
 
         stage('Deploy to Stage') {
             steps {
-                sh 'docker run -d -p 5000:5000 $IMAGE_NAME:Latest'
+                sh '''docker rm -f $IMAGE_NAME:Latest || true
+                docker run -d -p 5000:5000 $IMAGE_NAME:Latest'''
             }
         }
     }
