@@ -1,4 +1,3 @@
-#THIS COMMENT IS TO TEST WEBHOOK
 pipeline {
     agent any
     environment {
