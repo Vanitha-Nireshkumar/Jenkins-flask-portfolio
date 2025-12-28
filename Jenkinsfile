@@ -6,6 +6,11 @@ pipeline {
     }
 
     stages {
+        stage('test'){
+            steps{
+                echo"this is testing"
+            }
+        }
         stage('Checkout Code') {
             steps {
                 git 'https://github.com/theshubhamgour/flask-portfolio.git'
